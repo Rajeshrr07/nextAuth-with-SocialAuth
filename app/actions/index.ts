@@ -27,7 +27,7 @@ export async function doLogOut() {
 // }
 
 
-export async function doCredentialLogin(formData){
+export async function doCredentialLogin(formData:string){
   try {
     const response = await signIn("credentials", {
       email: formData.get('email'),
