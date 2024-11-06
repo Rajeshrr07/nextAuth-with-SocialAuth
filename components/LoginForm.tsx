@@ -14,6 +14,7 @@ const LoginForm = () => {
     try {
       const formData = new FormData(event.currentTarget);
       const response = await doCredentialLogin(formData);
+      console.log('formData: ', formData);
 
       if (response.error) {
         console.error(response.error);

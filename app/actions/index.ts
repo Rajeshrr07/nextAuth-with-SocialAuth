@@ -1,8 +1,13 @@
 'use server'
 
 import { signIn,signOut } from "@/auth";
- 
-export async function doSocialLogin(formData:string) {
+import { NewItem } from "@/lib/type";
+
+
+
+
+
+export async function doSocialLogin(formData:NewItem) {
   const action = formData.get('action')
   await signIn(action,{redirectTo:'/home'})
   console.log('action: ', action);
@@ -13,21 +18,10 @@ export async function doLogOut() {
   
 }
 
-// export async function doCredentialLogin(formData){
-//   try {
-//     const response = await signIn("credentials",{
-//       email : formData.get('email'),
-//       password : formData.get('password'),
-//       redirect : false,
-//     });
-//     return response;
-//   } catch (error) {
-//     throw new Error(error)
-//   }
-// }
 
 
-export async function doCredentialLogin(formData:string){
+export async function doCredentialLogin(formData){
+
   try {
     const response = await signIn("credentials", {
       email: formData.get('email'),
